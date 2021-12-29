@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>Number guessing game</title>
+
+
+  </head>
+
+<body>
+
+
+</body>
+
+<script>
+
+const playArray = ["rock", "paper", "scissors"];
+
+let playerWins = 0;
+let computerWins = 0;
+let playerSelection;
+let computerSelection;
+
+function computerPlay() {
+
+    let random = playArray[Math.floor(Math.random()*playArray.length)];
+    return random;
+}
+
+function playRound(playerSelection, computerSelection) {
+  // your code here!
+  
+  playerSelection = playerSelection.toLowerCase();
+
+  if (playerSelection === computerSelection) {
+    alert("Tie");
+    return;
+  }
+
+  if (playerSelection === "rock") {
+    if (computerSelection === "scissors"){
+      alert("You win! Rock beats scissors");
+      return (playerWins += 1); 
+    } else if (computerSelection === "paper") {
+      alert("You Lose! Paper beats Rock");
+      return (computerWins += 1); 
+    } else return;
+  }
+
+  if (playerSelection === "paper") {
+    if (computerSelection === "rock"){
+      alert("You win! Paper beats rock");
+      return (playerWins += 1);
+    } else if (computerSelection === "scissors") {
+      alert("You Lose! Scissors beats Paper");
+      return (computerWins += 1); 
+    } else return;
+  }
+
+  if (playerSelection === "scissors") {
+    if (computerSelection === "rock"){
+      alert("You lose! Rock beats scissors");
+      return (computerWins += 1); 
+    } else if (computerSelection === "paper") {
+      alert("You win! Scissors beats Rock")
+      return (playerWins += 1);
+    } else return;
+  }
+
+  console.log(playerWins);
+  console.log(computerWins);
+}
+
+
+function game() {
+
+  for (i = 0; i < 5; i++) {
+
+    playRound(playerSelection = prompt("Enter a play: "), computerPlay());
+  }
+
+  if ((playerWins) > (computerWins)) {
+    console.log(`Player wins with total of ${playerWins}`);
+  } else console.log(`Computer wins with total of ${computerWins}`);
+  
+}
+
+game();
+
+  
+</script>
+</html>
